@@ -1,0 +1,169 @@
+from tkinter import *  #all particulars from tkinter library
+import ttkthemes  #library for themes
+from tkinter import ttk
+
+# Function part
+def select(value):
+    if value == 'space':
+        textarea.insert('insert', " ")
+
+    elif value == 'enter':
+        textarea.insert('insert', '\n')
+
+    elif value == 'Tab':
+        textarea.insert('insert', '\t')
+
+    elif value == 'Del':
+        textarea.delete(1.0, END)
+
+    elif value == 'Backs':
+        textarea.delete("insert-1c", "insert")  # delete the character before the cursor
+
+    elif value == 'Shift>':
+
+
+        leftShiftButtons = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backs', 'Del',
+           'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', ']', '7', '8', '9',
+           'Caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ':', 'enter', '4', '5', '6',
+           'Shift>', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '<', '>', '?', '<Shift', '1', '2', '3',
+           'space']
+
+        varRow=2
+        varColumn=0
+
+        for button in leftShiftButtons:
+            def command(x=button):  # Define the function here to capture the current value of button
+                select(x)
+
+            if button != 'space':
+                ttk.Button(root, text=button, width=5, command=command).grid(column=varColumn,
+                                                                             row=varRow)  # use ttk to apply theme button
+                varColumn += 1
+                if varColumn > 14:
+                    varColumn = 0
+                    varRow += 1
+            else:
+                ttk.Button(root, text=button, width=25, command=command).grid(column=0, row=6,
+                                                                              columnspan=15)  # use ttk to apply theme on button
+
+    elif value == '<Shift':
+
+
+        rightShiftButtons = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backs', 'Del',
+           'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', ']', '7', '8', '9',
+           'Caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', 'enter', '4', '5', '6',
+           'Shift>', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '<Shift', '1', '2', '3',
+           'space']
+
+        varRow=2
+        varColumn=0
+
+        for button in rightShiftButtons:
+            def command(x=button):  # Define the function here to capture the current value of button
+                select(x)
+
+            if button != 'space':
+                ttk.Button(root, text=button, width=5, command=command).grid(column=varColumn,row=varRow)  # use ttk to apply theme button
+                varColumn += 1
+                if varColumn > 14:
+                    varColumn = 0
+                    varRow += 1
+            else:
+                ttk.Button(root, text=button, width=25, command=command).grid(column=0, row=6,columnspan=15)  # use ttk to apply theme on button
+
+
+    elif value == 'Caps':
+
+        capsButtons = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backs', 'Del',
+                             'Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', ']', '7', '8', '9',
+                             'CAPS', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', 'enter', '4', '5', '6',
+                             'Shift>', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '<Shift', '1', '2', '3',
+                             'space']
+
+        varRow = 2
+        varColumn = 0
+
+        for button in capsButtons:
+            def command(x=button):  # Define the function here to capture the current value of button
+                select(x)
+
+            if button != 'space':
+                ttk.Button(root, text=button, width=5, command=command).grid(column=varColumn,
+                                                                             row=varRow)  # use ttk to apply theme button
+                varColumn += 1
+                if varColumn > 14:
+                    varColumn = 0
+                    varRow += 1
+            else:
+                ttk.Button(root, text=button, width=25, command=command).grid(column=0, row=6,
+                                                                              columnspan=15)  # use ttk to apply theme on button
+
+    elif value == 'CAPS':
+
+
+        CAPSButtons = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backs', 'Del',
+           'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', ']', '7', '8', '9',
+           'Caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', 'enter', '4', '5', '6',
+           'Shift>', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '<Shift', '1', '2', '3',
+           'space']
+
+        varRow=2
+        varColumn=0
+
+        for button in CAPSButtons:
+            def command(x=button):  # Define the function here to capture the current value of button
+                select(x)
+
+            if button != 'space':
+                ttk.Button(root, text=button, width=5, command=command).grid(column=varColumn,row=varRow)  # use ttk to apply theme button
+                varColumn += 1
+                if varColumn > 14:
+                    varColumn = 0
+                    varRow += 1
+            else:
+                ttk.Button(root, text=button, width=25, command=command).grid(column=0, row=6,columnspan=15)  # use ttk to apply theme on button
+
+
+    else:
+        textarea.insert('insert', value)
+    textarea.focus_set()
+
+# GUI part
+root = ttkthemes.ThemedTk()  # establish the frame base as Tk() class but with theme
+root.get_themes()
+root.set_theme('radiance')
+
+root.title('On-Screen Keyboard created by Shashi Shekhar')  # establish title of GUI frame
+
+root.resizable(False, False)  # establish lock on size of GUI frame
+
+titlelabel = Label(root, text='On-Screen Keyboard', font=('arial', 20, 'bold'))  # using label class to label heading
+titlelabel.grid(column=0, row=0, columnspan=15)  # grid class for placing in the space
+
+textarea = Text(root, font=('arial', 15, 'bold'), height=10, width=100, bd=8, relief=SUNKEN)  # Text class to define text area
+textarea.focus()  # for automatic blinking
+textarea.grid(column=0, row=1, columnspan=15)
+
+varRow = 2
+varColumn = 0
+
+buttons = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backs', 'Del',
+           'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', ']', '7', '8', '9',
+           'Caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', 'enter', '4', '5', '6',
+           'Shift>', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '<Shift', '1', '2', '3',
+           'space']
+
+for button in buttons:
+    def command(x=button):  # Define the function here to capture the current value of button
+        select(x)
+
+    if button != 'space':
+        ttk.Button(root, text=button, width=5, command=command).grid(column=varColumn, row=varRow)  # use ttk to apply theme button
+        varColumn += 1
+        if varColumn > 14:
+            varColumn = 0
+            varRow += 1
+    else:
+        ttk.Button(root, text=button, width=25, command=command).grid(column=0, row=6, columnspan=15)  # use ttk to apply theme on button
+
+root.mainloop()  # establish the completeness of GUI frame
